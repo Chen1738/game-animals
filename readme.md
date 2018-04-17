@@ -1,3 +1,3 @@
-# Animals
+# Animals Simple Implement
 
-![Game Animals](display/demo.gif)
+![Game Animals](animaldemo.gif)
