@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-/*
+
         Button button2=(Button)findViewById(R.id.exit);
         button2.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
                 System.exit(0);
             }
-        });*/
+        });
     }
 }

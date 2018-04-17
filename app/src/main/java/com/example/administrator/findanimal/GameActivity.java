@@ -36,9 +36,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         private static final String TAG_LOG = GameActivity.class.getSimpleName();
         private static final int MY_PERMISSIONS_REQUEST_WRITE_LOCAL_STORAGE = 1210;
-        //public boolean right;
+        public boolean right;
 
         private TextView text;
+    private ImageView imageView,imageView2,imageView3,imageView4;
+        private int[] imagesid = {R.id.imageView,R.id.imageView2,R.id.imageView3,R.id.imageView4};
         Random random=new Random();
         final int stringNum = random.nextInt(20);
         final int idNum = random.nextInt(3);
@@ -48,6 +50,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             super.onCreate(savedInstanceState);
             setContentView(R.layout.game);
 
+            imageView = findViewById(R.id.imageView);
+            imageView2 = findViewById(R.id.imageView2);
+            imageView3 = findViewById(R.id.imageView3);
+            imageView4 = findViewById(R.id.imageView4);
+            imageView.setOnClickListener(this);
+            imageView2.setOnClickListener(this);
+            imageView3.setOnClickListener(this);
+            imageView4.setOnClickListener(this);
             // Connect the Button and set the onClick listener
             listFilesInAssets();
             copyAssetsFileIntoSdCard();
@@ -56,7 +66,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             HashSet<Integer> integerHashSet=new HashSet<Integer>();
             integerHashSet.add(stringNum);
 
-            int[] imagesid = {R.id.imageView,R.id.imageView2,R.id.imageView3,R.id.imageView4};
             String[] filenames = {"png/bear/512w/bearArtboard 1512.png","png/bird/512w/birdArtboard 1512.png","png/cat/512w/catArtboard 1512.png",
                     "png/elephant/512w/elephantArtboard 1512.png", "png/fish/512w/fishArtboard 1512.png","png/flower/512w/flowerArtboard 1512.png",
                     "png/giraffe/512w/giraffeArtboard 1512.png","png/honey/512w/honeyArtboard 1512.png","png/house/512w/houseArtboard 1512.png",
@@ -221,29 +230,34 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-           /* switch (v.getId()){
-                case  R.id.imageView:
-                    if(v.getId() == idNum)
-                        Toast.makeText(this,"you win",Toast.LENGTH_SHORT).show();//right = true;
-                    else Toast.makeText(this,"you lose",Toast.LENGTH_SHORT).show();//right = false;
-                    break;
-                case  R.id.imageView2:
-                    if(v.getId() == idNum)
-                        Toast.makeText(this,"you win",Toast.LENGTH_SHORT).show();//right = true;
-                    else Toast.makeText(this,"you lose",Toast.LENGTH_SHORT).show();//right = false;
-                    break;
-                case  R.id.imageView3:
-                    if(v.getId() == idNum)
-                        Toast.makeText(this,"you win",Toast.LENGTH_SHORT).show();//right = true;
-                    else Toast.makeText(this,"you lose",Toast.LENGTH_SHORT).show();//right = false;
-                    break;
-                case  R.id.imageView4:
-                    if(v.getId() == idNum)
-                        Toast.makeText(this,"you win",Toast.LENGTH_SHORT).show();//right = true;
-                    else Toast.makeText(this,"you lose",Toast.LENGTH_SHORT).show();//right = false;
-                    break;
+        switch (v.getId()){
+            case  R.id.imageView:
+                if(imagesid[idNum] == R.id.imageView)
+                    right = true;
+                else right = false;
+                break;
+            case  R.id.imageView2:
+                if(imagesid[idNum] == R.id.imageView2)
+                    right = true;
+                else right = false;
+                break;
+            case  R.id.imageView3:
+                if(imagesid[idNum] == R.id.imageView3)
+                    right = true;
+                else right = false;
+                break;
+            case  R.id.imageView4:
+                if(imagesid[idNum] == R.id.imageView4)
+                    right = true;
+                else right = false;
+                break;
+            //Toast.makeText(this,"you win",Toast.LENGTH_SHORT).show();
 
-            }*/
+        }
+        Intent intent = new Intent(getApplicationContext(),GameEnd.class);
+        intent.putExtra("shared_data", right);
+        startActivity(intent);
+
         }
 /*
     /**  * 从Assets中读取图片   * @param activity  * @param fileName  * @return
